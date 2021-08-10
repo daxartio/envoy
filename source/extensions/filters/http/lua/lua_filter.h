@@ -167,6 +167,7 @@ public:
             {"importPublicKey", static_luaImportPublicKey},
             {"verifySignature", static_luaVerifySignature},
             {"base64Escape", static_luaBase64Escape},
+            {"Base64Unescape", static_luaBase64Unescape},
             {"timestamp", static_luaTimestamp}};
   }
 
@@ -276,6 +277,13 @@ private:
    * @return (string) base64 escaped string.
    */
   DECLARE_LUA_FUNCTION(StreamHandleWrapper, luaBase64Escape);
+
+  /**
+   * Base64 unescape a string.
+   * @param1 (string) string to be base64 unescaped.
+   * @return (string) base64 unescaped string.
+   */
+  DECLARE_LUA_FUNCTION(StreamHandleWrapper, luaBase64Unescape);
 
   /**
    * Timestamp.

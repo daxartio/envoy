@@ -657,6 +657,16 @@ int StreamHandleWrapper::luaBase64Escape(lua_State* state) {
   return 1;
 }
 
+int StreamHandleWrapper::luaBase64Unescape(lua_State* state) {
+  size_t input_size;
+  const char* input = luaL_checklstring(state, 2, &input_size);
+  std::string* output
+  absl::Base64Unescape(absl::string_view(input, input_size), output);
+  lua_pushlstring(state, output.data(), output.length());
+
+  return 1;
+}
+
 int StreamHandleWrapper::luaTimestamp(lua_State* state) {
   auto now = time_source_.systemTime().time_since_epoch();
 
